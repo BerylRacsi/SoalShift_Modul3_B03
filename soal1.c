@@ -89,13 +89,20 @@ void main()
 
 			}
 			else if(y==1)
-			{
+			{	
+				if(*value > 0)
 				printf("%s %d\n",s1,*value);
+                                if(*value2 > 0)
                                 printf("%s %d\n",s2,*value2);
+                                if(*value3 > 0)
                                 printf("%s %d\n",s3,*value3);
+                                if(*value4 > 0)
                                 printf("%s %d\n",s4,*value4);
+                                if(*value5 > 0)
                                 printf("%s %d\n",s5,*value5);
+                                if(*value6 > 0)
                                 printf("%s %d\n",s6,*value6);
+
 
 			}
 		}
@@ -123,6 +130,17 @@ void main()
                                 else if(strcmp(beli,s6) == 0)
                                         *value6 =*value6 - b;
 			}
+			else if(z==1)
+			{
+                                printf("%s %d\n",s1,*value);
+                                printf("%s %d\n",s2,*value2);
+                                printf("%s %d\n",s3,*value3);
+                                printf("%s %d\n",s4,*value4);
+                                printf("%s %d\n",s5,*value5);
+                                printf("%s %d\n",s6,*value6);
+
+                        }
+
 	
 		}
 	}
