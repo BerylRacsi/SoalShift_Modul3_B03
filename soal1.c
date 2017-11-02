@@ -1,9 +1,10 @@
 #include<stdio.h>
-<<<<<<< HEAD
+
 
 int main()
 {
 	printf("lulLUL");
+	printf("lololol");
 
 	return 0;
 }
