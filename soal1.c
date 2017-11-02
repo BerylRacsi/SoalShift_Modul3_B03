@@ -2,7 +2,7 @@
 
 int main()
 {
-	printf("lul");
+	printf("lulLUL");
 
 	return 0;
 }
