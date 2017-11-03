@@ -26,16 +26,20 @@ void* playandcount(void *arg)
       {
 
         system("clear");
+
+	printf("thread 1 : %i thread 2: %i ",lohan,kepiting);
+            fflush(stdout);
+            sleep(10);
+
 	lohan=lohan-15;
             
 	if(lohan<=0 || lohan>100)
         {
+//		system("clear");
                 printf("PERMAINAN BERAKHIR");
                 exit(0);
         }
-	    printf("thread 1 : %i thread 2: %i ",lohan,kepiting);
-            fflush(stdout);
-            sleep(10);
+	    
 
 //            system("clear");
 //	    lohan=lohan-15;
@@ -51,17 +55,19 @@ void* playandcount(void *arg)
         {
 		system("clear");
 
+		printf("thread 1 : % i thread 2 : %i  ",lohan,kepiting);
+            fflush(stdout);
+            sleep(20);
+
 		kepiting=kepiting-10;
             
 	if(kepiting<=0 || kepiting>100)
         {
+//		system("clear");
                 printf("PERMAINAN BERAKHIR");
                 exit(0);
         }
-	 printf("thread 1 : % i thread 2 : %i  ",lohan,kepiting);
-            fflush(stdout);
-            sleep(20);
-
+	 
 //            system("clear");
 //	    kepiting=kepiting-10;
         }
@@ -88,7 +94,7 @@ int main(void)
     }
     pthread_join(tid[0],NULL);
     pthread_join(tid[1],NULL);
-	printf("lohan : %d kepiting : %d\n",lohan,kepiting);
+//	printf("lohan : %d kepiting : %d\n",lohan,kepiting);
     return 0;
 }
 
