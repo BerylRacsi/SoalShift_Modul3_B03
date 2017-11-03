@@ -8,9 +8,10 @@
 *compile dengan cara gcc -pthread -o [output] input.c *
 *******************************************************/
 
-pthread_t tid[2];//inisialisasi array untuk menampung thread dalam kasusu ini ada 2 thread
+pthread_t tid[3];//inisialisasi array untuk menampung thread dalam kasusu ini ada 2 thread
 int lohan = 100;
 int kepiting = 100;
+int x;
 int length=10;//inisialisasi jumlah looping
 
 void* playandcount(void *arg)
@@ -27,7 +28,7 @@ void* playandcount(void *arg)
 
         system("clear");
 
-	printf("thread 1 : %i thread 2: %i ",lohan,kepiting);
+	printf("LOHAN 1 : %i kepiting 2: %i \n1 BERI MAKAN LOHAN \n2 BERI MAKAN KEPITING\n",lohan,kepiting);
             fflush(stdout);
             sleep(10);
 
@@ -36,7 +37,7 @@ void* playandcount(void *arg)
 	if(lohan<=0 || lohan>100)
         {
 //		system("clear");
-                printf("PERMAINAN BERAKHIR");
+                printf("PERMAINAN BERAKHIR\n");
                 exit(0);
         }
 	    
@@ -55,7 +56,7 @@ void* playandcount(void *arg)
         {
 		system("clear");
 
-		printf("thread 1 : % i thread 2 : %i  ",lohan,kepiting);
+		printf("LOHAN 1 : % i KEPITING 2 : %i \n1 BERI MAKAN LOHAN \n2 BERI MAKAN KEPITING\n",lohan,kepiting);
             fflush(stdout);
             sleep(20);
 
@@ -64,7 +65,7 @@ void* playandcount(void *arg)
 	if(kepiting<=0 || kepiting>100)
         {
 //		system("clear");
-                printf("PERMAINAN BERAKHIR");
+                printf("PERMAINAN BERAKHIR\n");
                 exit(0);
         }
 	 
@@ -73,13 +74,44 @@ void* playandcount(void *arg)
         }
 
     }   
+	else if(pthread_equal(id,tid[2]))
+	{	
+//		system("clear");
+		while(1)
+		{	
+//			system("clear");
+//			printf("lul :");
+			scanf("%d",&x);
+			if(x==1)
+			{	
+				printf("LOHAN MAKAN +10\n");
+				lohan=lohan+10;
+				if(lohan>100)
+				{
+					printf("LOHAN MATI KEKENYANGAN PERMAINAN BERAKHIR");
+                			exit(0);
+				}
+			}
+			else if(x==2)
+			{
+				printf("KEPITING MAKAN + 10\n");
+				kepiting=kepiting+10;
+				if(kepiting>100)
+                                {
+                                        printf("KEPITING MATI KEKENYANGANPERMAINAN BERAKHIR");
+                                        exit(0);
+                                }
+			}
+		}
+	}
+	
     return NULL;
 }
 int main(void)
 {
     int i=0;
     int err;
-    while(i<2)//looping membuat thread 2x
+    while(i<3)//looping membuat thread 2x
     {
         err=pthread_create(&(tid[i]),NULL,&playandcount,NULL);//membuat thread
         if(err!=0)//cek error
@@ -94,6 +126,8 @@ int main(void)
     }
     pthread_join(tid[0],NULL);
     pthread_join(tid[1],NULL);
+    pthread_join(tid[2],NULL);
+
 //	printf("lohan : %d kepiting : %d\n",lohan,kepiting);
     return 0;
 }
