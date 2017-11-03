@@ -9,8 +9,8 @@
 *******************************************************/
 
 pthread_t tid[2];//inisialisasi array untuk menampung thread dalam kasusu ini ada 2 thread
-int lohan = 100;
-int kepiting = 100;
+int lohan = 300;
+int kepiting = 300;
 int length=10;//inisialisasi jumlah looping
 
 void* playandcount(void *arg)
@@ -23,10 +23,13 @@ void* playandcount(void *arg)
         system("clear");
         for(iter=length;iter>0;iter--)
         {
-            printf("thread 1 : %i  ",iter);
+	lohan=lohan-15;
+            printf("thread 1 : %i  ",lohan);
             fflush(stdout);
             sleep(1);
-            system("clear");
+//            system("clear");
+//	    lohan=lohan-15;
+	
         }        
     }
     else if(pthread_equal(id,tid[1]))
@@ -35,13 +38,17 @@ void* playandcount(void *arg)
 	 system("clear");
         for(iter=0;iter<length;iter++)
         {
-            printf("thread 2 : %i  ",iter);
+		kepiting=kepiting-10;
+            printf("thread 2 : %i  ",kepiting);
             fflush(stdout);
             sleep(1);
-            system("clear");
+//            system("clear");
+//	    kepiting=kepiting-10;
         }
 
     }
+
+	printf("\n");   
     return NULL;
 }
 int main(void)
@@ -63,6 +70,7 @@ int main(void)
     }
     pthread_join(tid[0],NULL);
     pthread_join(tid[1],NULL);
+printf("lohan : %d kepiting : %d\n",lohan,kepiting);
     return 0;
 }
 
